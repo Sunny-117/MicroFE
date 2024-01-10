@@ -1,0 +1,2 @@
+(self.webpackChunkhome=self.webpackChunkhome||[]).push([["573"],{882:function(e,t,n){"use strict";n.r(t),n.d(t,{default:function(){return u}});var o=n("407"),a=n.n(o);function u(e){let t=a()("<p>").appendTo(e).text(new Date().toLocaleString());setInterval(function(){t.text(new Date().toLocaleString())},1e3)}}}]);
+//# sourceMappingURL=573.js.map
