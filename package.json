@@ -1,0 +1,19 @@
+{
+  "name": "micro-frontends",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "pnpm run -r --parallel dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sunny-117/Micro-Frontends.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sunny-117/Micro-Frontends/issues"
+  },
+  "homepage": "https://github.com/Sunny-117/Micro-Frontends#readme"
+}

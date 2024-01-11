@@ -5,7 +5,7 @@ module.exports = {
   mode: 'development',
   devtool: 'source-map',
   devServer: {
-    port: 8080,
+    port: 8080
   },
   output: {
     clean: true,
