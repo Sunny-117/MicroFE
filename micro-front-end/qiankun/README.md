@@ -13,8 +13,6 @@ https://juejin.cn/post/7116339848109096974
 https://www.cnblogs.com/sexintercourse/p/16980569.html
 https://hijiangtao.github.io/2022/06/11/JavaScript-Sandbox-Mechanism-and-Its-History/
 
-
-
 ### 单例，快照沙箱：
 
 ![](assets/2022-12-16-15-04-16.png)
@@ -22,7 +20,6 @@ https://hijiangtao.github.io/2022/06/11/JavaScript-Sandbox-Mechanism-and-Its-His
 ### 多例，proxy
 
 ![](assets/2022-12-16-15-07-21.png)
-
 
 以上，所以
 
