@@ -2,6 +2,7 @@ const rspack = require('@rspack/core')
 
 const refreshPlugin = require('@rspack/plugin-react-refresh')
 const isDev = process.env.NODE_ENV === 'development'
+const lessRule = [/\.less$/, /\.css$/];
 /**
  * @type {import('@rspack/cli').Configuration}
  */
@@ -54,6 +55,24 @@ module.exports = {
           },
         ],
       },
+      {
+        test: lessRule,
+        use: [
+            {
+                loader: 'less-loader'
+            },
+            {
+              loader: 'style-resources-loader',
+              options: {
+                  patterns: [
+                      './src/dlsToken.less',
+                    // paths.defaultVar || ''
+                  ]
+              }
+          }
+        ],
+        type: 'css'
+    },
     ],
   },
   plugins: [
