@@ -62,7 +62,8 @@
         function getLastGlobalProperty() {  // 看下window上新增的属性
             for (let k in window) {
                 if (set.has(k)) continue;
-
+                // 电脑环境问题
+                if(k === 'getAutoEventTrackingInfo') continue
                 set.add(k);
                 return window[k]; // 我通过script新增的变量
             }
@@ -93,7 +94,7 @@
                         return Promise.all(registeration.map((dep, i) => {
                             return load(dep).then(() => {
                                 const property = getLastGlobalProperty()
-                                debugger
+                                // debugger
                                 // 加载完毕后，会在window上增添属性 window.React window.ReactDOM
                                 setters[i](property)
                             })
