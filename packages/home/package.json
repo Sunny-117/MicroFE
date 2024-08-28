@@ -22,7 +22,6 @@
     "webpack-dev-server": "^4.7.4"
   },
   "dependencies": {
-    "@baidu/one-ui": "4.32.1",
     "craco-plugin-style-resources-loader": "^0.0.3",
     "dls-icons-react": "^3.11.0",
     "jquery": "^3.6.0",

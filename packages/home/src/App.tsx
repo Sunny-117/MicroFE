@@ -1,7 +1,5 @@
 import React from "react";
-import { Button } from "@baidu/one-ui";
 import "./index.less";
-import "@baidu/one-ui/lib/index.css";
 
 export default function App() {
   return (
