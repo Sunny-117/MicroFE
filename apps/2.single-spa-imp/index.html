@@ -66,8 +66,10 @@
         // 开启路径的监控，路径切换的时候 可以调用对应的mount unmount
         start()
 
-
-        // 这个监控操作 应该被延迟到 当应用挂挂载完毕后再行
+        // 但是当路由切换的时候 我们触发single-spa内部的addEventLister, 应用中可能也包含addEventLister
+        // 用户的监听事件
+        // 这个监控操作 应该被延迟到 当应用挂挂载完毕后再行callCaptureEventListeners
+        // 因为应用还没挂载完，监听事件没意义
         window.addEventListener('hashchange', function () {
             console.log(window.location.hash, 'p----')
         })
@@ -77,9 +79,10 @@
         // })
     </script>
 <a onclick="go('#/a')">a应用</a>
-<a onclick="go('#/b')">b应用</a>
+<a onclick="go('#/b')">b应用</a> 
 <script>
     function go(url) { // 用户调用pushState replaceState 此方法不会触发逻辑reroute
+        // 所以应该拦截之后触发reroute方法
         history.pushState({}, null, url)
     }
 </script>
