@@ -14,8 +14,7 @@ import { callCaptureEventListeners } from "./naviation-event.js";
 let appChangeUnderWay = false;
 let peopleWaitingOnAppChange = []
 export function reroute(event) {
-
-    // 如果多次触发reroute 方法我们可以创造一个队列来屏蔽这个问题
+    // 如果多次触发reroute（同一时间，触发popstate和hashchange的时候） 方法我们可以创造一个队列来屏蔽这个问题
     if(appChangeUnderWay){
         return new Promise((resolve,reject)=>{
             peopleWaitingOnAppChange.push({
