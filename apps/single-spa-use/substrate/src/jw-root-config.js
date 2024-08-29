@@ -8,7 +8,7 @@ registerApplication({
     System.import( // 远程加载模块
       "https://unpkg.com/single-spa-welcome/dist/single-spa-welcome.js"
     ),
-  activeWhen: (location)=>location.pathname === '/' ,
+  activeWhen: (location)=>location.pathname === '/main' ,
 });
 
 registerApplication({

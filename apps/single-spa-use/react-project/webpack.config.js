@@ -8,6 +8,7 @@ module.exports = (webpackConfigEnv, argv) => {
     webpackConfigEnv,
     argv,
   });
+  // 默认会把react，react-dom放在externals中
   delete defaultConfig.externals; // react 和 react-dom 就打包到当前项目中
   return merge(defaultConfig, {
     devServer:{

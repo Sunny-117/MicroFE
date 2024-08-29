@@ -14,6 +14,7 @@
       }
     }
   </script>
+  <!-- 预加载 -->
   <link rel="preload" href="https://cdn.jsdelivr.net/npm/single-spa@5.9.0/lib/system/single-spa.min.js" as="script">
 
   <!-- Add your organization's prod import map URL to this script's src  -->
@@ -42,7 +43,7 @@
 </head>
 <body>
   <main>
-    <a onClick="go('/')">去welcome</a>
+    <a onClick="go('/main')">去welcome</a>
     <a onClick="go('/react')">去react</a>
     <a onClick="go('/vue')">去vue</a>
   </main>
