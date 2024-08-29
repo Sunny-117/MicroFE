@@ -6,7 +6,7 @@ export function toUnmountPromise(app){
             return app;
         }
         app.status = UNMOUNTING;
-        // app.unmount 方法用户可能写的是一个数组。。。。。
+        // app.unmount 方法用户可能写的是一个数组。。。。。所以需要flattenArrayToPromise
         return app.unmount(app.customProps).then(()=>{
             app.status = NOT_MOUNTED;
         })

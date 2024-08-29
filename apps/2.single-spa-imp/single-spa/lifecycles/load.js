@@ -22,7 +22,6 @@ export function toLoadPromise(app){
             app.bootstrap = flattenArrayToPromise(bootstrap);
             app.mount = flattenArrayToPromise(mount);
             app.unmount = flattenArrayToPromise(unmount);
-
             return app
         })
     })

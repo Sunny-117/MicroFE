@@ -25,6 +25,7 @@ export function reroute(event) {
     }
     // 获取app对应的状态 进行分类
     const { appsToLoad, appsToMount, appsToUnmount } = getAppChanges()
+    console.log({appsToLoad, appsToMount, appsToUnmount}, 'getAppChanges')
     // 加载完毕后 需要去挂载的应用
     if(started){
         appChangeUnderWay = true
@@ -49,7 +50,7 @@ export function reroute(event) {
         // 默认情况注册的时候 路径是 /a , 但是当我们start的时候应用是/b
         const loadMountPromises = Promise.all(appsToLoad.map(app=> toLoadPromise(app).then(app=>{
             // 当应用加载完毕后 需要启动和挂载，但是要保证挂载前 先卸载掉来的应用
-            return  tryBootstrapAndMount(app,unmountAllPromises)
+            return tryBootstrapAndMount(app,unmountAllPromises)
         })));
 
         // 如果应用 没有加载   加载 -》启动挂载   如果应用已经加载过了  挂载
@@ -61,17 +62,13 @@ export function reroute(event) {
                 return toBootstrapPromise(app).then(app=> unmountAllPromises.then(()=> toMountPromise(app)))
             }
         }
-        
         return Promise.all([loadMountPromises,MountPromises]).then(()=>{ // 卸载完毕后
             callEventListener();
             appChangeUnderWay = false;
             if(peopleWaitingOnAppChange.length > 0){
                 peopleWaitingOnAppChange = []; // 多次操作 我缓存起来，。。。。
             }
-           
         })
-
-        
     }
 
     function callEventListener(){
@@ -79,10 +76,3 @@ export function reroute(event) {
     }
 
 }
-
-//  [a]  -》 【a]
-//  [a,b] -> [a]
-
-
-// [a]  -> []
-// [a,b]  -> [b]

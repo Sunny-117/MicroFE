@@ -11,7 +11,7 @@ window.addEventListener('hashchange', urlRoute)
 window.addEventListener('popstate', urlRoute); // 浏览器历史切换的时候会执行此方法
 
 
-// 但是当路由切换的时候 我们触发single-spa的addEventLister, 应用中可能也包含addEventLister
+// 但是当路由切换的时候 我们触发single-spa内部的addEventLister, 应用中可能也包含addEventLister
 
 
 // 需要劫持原生的路由系统，保证当我们加载完后再切换路由
@@ -43,6 +43,7 @@ window.removeEventListener = function(eventName,callback){
 
 export function callCaptureEventListeners(e){
     if(e){
+        // 说明是浏览器的跳转操作
         const eventType = e[0].type;
         if(listentingTo.includes(eventType)){
             capturedEventListeners[eventType].forEach(listener => {
@@ -52,7 +53,7 @@ export function callCaptureEventListeners(e){
     }
 }
 
-function patchFn(updateState,methodName){
+function patchFn(updateState){
     return function(){
         const urlBefore = window.location.href;
         const r = updateState.apply(this,arguments); // 调用此方法 确实发生了路径的变化
@@ -66,6 +67,6 @@ function patchFn(updateState,methodName){
     }
 }
 
-window.history.pushState = patchFn(window.history.pushState,'pushState')
+window.history.pushState = patchFn(window.history.pushState)
 
-window.history.replaceState = patchFn(window.history.replaceState,'replaceState')
+window.history.replaceState = patchFn(window.history.replaceState)

@@ -3,6 +3,7 @@ import { NOT_LOADED } from "./app.helpers.js"
 
 export const apps = []
 export function registerApplication(appName,loadApp,activeWhen,customProps){
+    // debugger
     const registeration = {
         name:appName,
         loadApp,
