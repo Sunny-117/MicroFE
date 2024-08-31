@@ -4,15 +4,15 @@ import { useEffect } from 'react';
 import { loadMicroApp} from 'qiankun'
 function App() {
   const containerRef = React.createRef();
- 
-  useEffect(()=>{
-    loadMicroApp({
-      name:'m-static',
-      entry: 'http://localhost:30000',
-      container:containerRef.current
-    })
-  })
+  
   // keep-alive 可以实现动态的加载
+  // useEffect(()=>{
+  //   loadMicroApp({
+  //     name:'m-static',
+  //     entry: 'http://localhost:54511',
+  //     container:containerRef.current
+  //   })
+  // })
   return (
     <div className="App">
       <BrowserRouter>

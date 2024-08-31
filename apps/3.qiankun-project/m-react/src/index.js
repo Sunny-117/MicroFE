@@ -12,6 +12,7 @@ function render(props) {
     );
 }
 // qiankun 提供了一些标识，用于表示当前应用是否在父应用中被引入过
+// 如果不判断，直接调用render方法，会导致应用被渲染两次
 if (!window.__POWERED_BY_QIANKUN__) {
     render({}); // 独立运行调用render方法
 }
