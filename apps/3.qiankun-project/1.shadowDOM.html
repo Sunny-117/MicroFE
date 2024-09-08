@@ -19,12 +19,14 @@
         const appElement =  container.firstChild
         let oldContent =appElement.innerHTML; // 老的内容
         appElement.innerHTML = ''
-        let shadow =  appElement.attachShadow({mode:'closed'})
+        // let shadow =  appElement.attachShadow({mode:'closed'})
+        let shadow =  appElement.attachShadow({mode:'open'})
         shadow.innerHTML = oldContent; // 放到影子dom中
         document.body.appendChild(appElement)
 
 
         console.dir(shadow.querySelector('#inner'))
+        // 缺点：完全隔离了，qiankun移除了改隔离方法strictStyleIsolation
     </script>
 </body>
 </html>

@@ -50,11 +50,11 @@ start({
         // css-module,scoped 可以再打包的时候生成一个选择器的名字  增加属性 来进行隔离
         // BEM
         // CSS in js
-        // shadowDOM 严格的隔离
-
-        // strictStyleIsolation:true,
-        //experimentalStyleIsolation:true // 缺点 就是子应用中的dom元素如果挂在到了外层，会导致样式不生效
+        // strictStyleIsolation:true, 创建影子dom隔离  shadowDOM 严格的隔离
+        // experimentalStyleIsolation:true // 缺点 就是子应用中的dom元素如果挂在到了外层，会导致样式不生效
     }
 })
 
 
+
+// https://github.com/umijs/qiankun/issues?q=sort%3Aupdated-desc+is%3Aissue+is%3Aopen+strictStyleIsolation
