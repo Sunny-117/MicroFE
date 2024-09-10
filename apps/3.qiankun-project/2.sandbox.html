@@ -7,13 +7,15 @@
     <title>Document</title>
 </head>
 <body>
+    <div>JS隔离</div>
     <!-- 沙箱 防止应用加载的时候 对widow造成污染 -->
 
     <!-- a-> 更改了window属性 删掉 -->
     <!-- b-> 更改了window属性 -->
 
-    <!-- 先保留a应用的属性  失活的时候 把修改的属性存起来，激活的时候还原回来 -->
-    <!-- 快照 浪费内存，因为要给window拍照 -->
+    <!-- 
+        先保留a应用的属性  失活的时候 把修改的属性存起来，激活的时候还原回来：快照 浪费内存，因为要给window拍照 
+    -->
 
     <script>
         /*
@@ -36,7 +38,7 @@
                 Object.keys(window).forEach(prop=>{
                     if(window[prop] !== this.windowSnapShot[prop]){
                         this.modifyPropsMap[prop] = window[prop];  
-                        window[prop] = this.windowSnapShot[prop];
+                        window[prop] = this.windowSnapShot[prop]; // 还原修改的属性
                     }
                 })
             }
@@ -50,7 +52,7 @@
         sandbox.active();
         console.log(window.a,window.b)
 
-        // 缺点就是 浪费内存， **快照**， 存储修改的或者添加的属性，不要给window拍照
+        // 缺点就是 浪费内存， **快照**， 优化：存储修改的或者添加的属性，不要给window拍照
         */
         // proxy兼容性问题
 
@@ -119,6 +121,7 @@
         })(sandbox.proxy)
         */
 
+        // qiankun源码实现方式：ProxySandBox
         // 多个实例来实现
         class ProxySandbox {
             constructor(){
@@ -134,7 +137,7 @@
                         }
                         return true;
                     }
-                    // 修改不在操作window属性
+                    // 修改不在操作window属性，就可以解决上述问题
                 })
             }
             active(){
@@ -154,19 +157,19 @@
         console.log(sandbox2.proxy.a)
         sandbox1.inactive();
         sandbox2.inactive();
-        sandbox1.proxy.a = 200;
+        sandbox1.proxy.a = 200; // 失活了，所以改不了了
         sandbox2.proxy.a = 200;
         console.log(sandbox1.proxy.a,window.a)
         console.log(sandbox2.proxy.a)
 
-        (function(window){
+        // (function(window){
 
-        })(sandbox1.proxy)
+        // })(sandbox1.proxy)
 
 
-        (function(window){
+        // (function(window){
 
-        })(sandbox2.proxy)
+        // })(sandbox2.proxy)
     </script>
 
 </body>
