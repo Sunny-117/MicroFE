@@ -58,7 +58,7 @@ function prefetch(entry: Entry, opts?: ImportEntryOpts): void {
     // Don't prefetch if in a slow network or offline
     return;
   }
-
+  // 空闲时加载
   requestIdleCallback(async () => {
     // 预加载入口文件  替代systemjs -> import-html-enttry  加载html注释掉 js和css文件
     const { getExternalScripts, getExternalStyleSheets } = await importEntry(entry, opts);
