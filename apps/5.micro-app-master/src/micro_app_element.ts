@@ -64,7 +64,7 @@ export function defineElement (tagName: string): void {
         this.appName,
         lifeCycles.CREATED,
       ))
-      this.initialMount() ; // 初始化
+      this.initialMount() // 初始化
     }
 
     disconnectedCallback (): void {
@@ -165,7 +165,7 @@ export function defineElement (tagName: string): void {
           logError(`app name conflict, an app named ${this.appName} is running`, this.appName)
         }
       } else {
-        this.handleCreateApp(); // 处理创建应用
+        this.handleCreateApp() // 处理创建应用
       }
     }
 

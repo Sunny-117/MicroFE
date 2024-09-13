@@ -18,7 +18,8 @@
         <button class="my-button"><slot>按钮</slot></button>
     </template>
 
-    <button class="my-button"></button>
+
+    <button class="my-button">天生的样式隔离（不会影响到我）</button>
 
     <script>
         // 思想：iframe webcomponent  路由劫持 （通信） 隔离（js 隔离 css隔离）
@@ -27,7 +28,7 @@
         // micro-app 核心是将你的应用 变成自定义元素，插入到基座中
         // webComponent兼容性不好 2010年就出现了，兼容性不好
         class MyButton extends HTMLElement{
-            connectedCallback(){ // vue组件中的mounted
+            connectedCallback(){ // 类似vue组件中的mounted
                 // 元素挂载完成后，我们需要获取传入的属性，并且使用对应的模板来渲染
                 this.shadow = this.attachShadow({mode:'open'})
                 let btn =  document.getElementById('btn');// => 获取远程html
@@ -55,6 +56,7 @@
                 this.dispatchEvent(new CustomEvent('mounted1')); // 自定义发射的事件
             }
             static get observedAttributes(){
+                // 监控属性变化
                 return ['type']
             }
             attributeChangedCallback(name,oldVal,newVal){

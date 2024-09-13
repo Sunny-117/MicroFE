@@ -441,6 +441,9 @@ function patchDocument () {
  * it should exec when micro-app first created & release when all app unmounted
  */
 let hasRewriteSetAttribute = false
+/**
+ * 对setAttribute重写
+ */
 export function patchSetAttribute (): void {
   if (hasRewriteSetAttribute) return
   hasRewriteSetAttribute = true
