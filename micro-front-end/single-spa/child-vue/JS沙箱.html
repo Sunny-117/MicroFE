@@ -12,7 +12,7 @@
         // 如果应用 加载 刚开始我加载A应用 window.a  B应用 (window.a);
         // 单应用切换  沙箱 创造一个干净的环境给这个子应用使用，当切换时 可以选择丢弃属性和恢复属性
 
-        // JS沙箱  proxy 
+        // JS沙箱  proxy  如果不支持proxy，怎么做呢，参考如下SnapshotSandbox
 
         // 快照沙箱  1年前拍一张  在拍一张  （将区别保存起来） 在回到一年前
         class SnapshotSandbox {
@@ -57,11 +57,6 @@
         })(sandbox.proxy); // sandbox.proxy就是window
     // 如果是多个子应用就不能使用这种方式了，es6的proxy
     // 代理沙箱可以实现多应用沙箱。把不同的应用用不同的代理来处理
-
-
-
-
-
     </script>
 </body>
 
