@@ -12,8 +12,9 @@
     <!-- 加载子应用的div -->
     <div id="container"></div>
     <!-- 
+        wujie原理：
         以前我们的js都是放到沙箱（自己实现的）中跑的  -> iframe
-        我们的css隔离 （scopedCSS） -> webComponent(shadowRoot)
+        我们的css隔离 （scopedCSS性能不好，需要拿到css加前缀） -> webComponent(shadowRoot绝对隔离)
         渲染采用webComponent （拉取html模板 生成自定义组件插入到指定的dom种）
      -->
 
@@ -34,13 +35,13 @@
              </style>
         </body>
         </html>
-        `
+        `;
         const strScript = `
             window.a = 100; // 此属性不会影响父应用
             console.log(window.a); // 100
             const ele = document.querySelector('#inner')
             console.log(ele);
-        `
+        `;
 
         function createIframe(){
             const iframe = document.createElement('iframe');
