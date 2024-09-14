@@ -71,11 +71,10 @@
             const headElement = iframeWindow.document.querySelector('head');
 
 
-            // 我们希望在脚本执行之前，有些方法用的是父应用的
-            // document.querySelector 应该用的不是iframe中的 -》 shadowRoot 去弄
-            // 添加弹框的时候 document.createElement().appendChild() -> 代理到全局的window上去
-
-            // iframe中的路由管理  history.pushState -> 将一些常用方法进行同步到主应用
+            // 我们希望在脚本执行之前，有些方法用的是父应用的-父应用和子应用的通信
+            // 1.document.querySelector 应该用的不是iframe中的 -》 shadowRoot 去弄
+            // 2.添加弹框的时候 document.createElement().appendChild()，这些方法应该代理到全局的window上去
+            // 3.iframe中的路由管理  history.pushState -> 将一些常用方法进行同步到主应用
             // ......
             Object.defineProperty(iframeWindow.Document.prototype, 'querySelector',{
                 get(){

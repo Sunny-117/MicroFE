@@ -1,0 +1,18 @@
+.DS_Store
+node_modules
+dist
+site
+lib
+esm
+.DS_Store
+.vscode
+yarn.lock
+package-lock.json
+coverage
+.history
+.npmrc
+
+# Log files
+.pnpm-debug.log*
+cache
+.idea

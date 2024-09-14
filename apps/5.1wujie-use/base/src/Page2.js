@@ -6,6 +6,6 @@ export default function Page2(){
     url="http://localhost:8080"
     width="100%"
     height="100%"
-    sync={true}
+    sync={true} // 路由同步到父级
 ></WujieReact>
 }
