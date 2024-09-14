@@ -827,6 +827,7 @@ export function iframeGenerator(
   const iframeWindow = iframe.contentWindow;
   // 变量需要提前注入，在入口函数通过变量防止死循环
   patchIframeVariable(iframeWindow, sandbox, appHostPath);
+  // 停止加载资源
   sandbox.iframeReady = stopIframeLoading(iframeWindow).then(() => {
     if (!iframeWindow.__WUJIE) {
       patchIframeVariable(iframeWindow, sandbox, appHostPath);

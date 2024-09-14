@@ -5,6 +5,7 @@ export default function WujieReact(props){
     const myRef = useRef(null);
     let destroy = null;
     const startAppFunc = async()=>{
+        debugger
         destroy = await startApp({
             ...props,
             el:myRef.current

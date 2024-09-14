@@ -511,12 +511,13 @@ export default class Wujie {
     const { mainHostPath } = this.inject;
     // 创建iframe
     this.iframe = iframeGenerator(this, attrs, mainHostPath, appHostPath, appRoutePath);
-
     if (this.degrade) {
+      // 降级方案
       const { proxyDocument, proxyLocation } = localGenerator(this.iframe, urlElement, mainHostPath, appHostPath);
       this.proxyDocument = proxyDocument;
       this.proxyLocation = proxyLocation;
     } else {
+      // 代理：让iframe可以和外界通信
       const { proxyWindow, proxyDocument, proxyLocation } = proxyGenerator(
         this.iframe,
         urlElement,

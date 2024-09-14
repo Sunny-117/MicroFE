@@ -196,8 +196,8 @@ export async function startApp(startOptions: startOptions): Promise<Function | v
     props,
     attrs,
     degradeAttrs,
-    fiber,
-    alive,
+    fiber, // 使用空闲时间加载 requestIdelCallback
+    alive, // 保活
     degrade,
     sync,
     prefix,
@@ -257,8 +257,11 @@ export async function startApp(startOptions: startOptions): Promise<Function | v
 
   // 设置loading
   addLoading(el, loading);
+  // 创建沙箱
   const newSandbox = new WuJie({ name, url, attrs, degradeAttrs, fiber, degrade, plugins, lifecycles });
+  // 生命周期方法beforeLoad
   newSandbox.lifecycles?.beforeLoad?.(newSandbox.iframe.contentWindow);
+  // 获取模板
   const { template, getExternalScripts, getExternalStyleSheets } = await importHTML({
     url,
     html,
@@ -271,7 +274,9 @@ export async function startApp(startOptions: startOptions): Promise<Function | v
   });
 
   const processedHtml = await processCssLoader(newSandbox, template, getExternalStyleSheets);
+  // 将template和css插入到shallowDOM中
   await newSandbox.active({ url, sync, prefix, template: processedHtml, el, props, alive, fetch, replace });
+  // 在iframe中执行js脚本
   await newSandbox.start(getExternalScripts);
   return newSandbox.destroy;
 }
