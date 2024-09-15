@@ -60,6 +60,7 @@
             mySingleSpa.registerApplication('app1', loadAppPromise(APP1), location => location.hash === '#/app1');
             mySingleSpa.registerApplication('app2', loadAppPromise(APP2), location => location.hash === '#/app2');
 
+            // 启动之前 会在匹配到路径后先加载应用，不会挂载
             // 启动
             mySingleSpa.start();
         })(window);
