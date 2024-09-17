@@ -13,7 +13,7 @@ export function start() {
         return;
     }
     started = true;
-    return invoke();
+    return invoke(); // 加载+挂载应用
 }
 
 export function isStarted() {

@@ -25,8 +25,10 @@ export function invoke(pendings, eventArgs) {
 
     loadAppsUnderway = true;
     if (isStarted()) {
-        return performAppChanges();
+        // app装载
+        return performAppChanges(); // 根据路径装载应用
     }
+    // 注册应用时，需要预先加载
     return loadApps();
 
 
