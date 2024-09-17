@@ -1,5 +1,7 @@
 # qiankun
 
+重点看qiankun的沙箱源码，比较简单
+
 https://juejin.cn/post/7016900744695513125
 
 https://www.garfishjs.org/
