@@ -32,6 +32,7 @@ module.exports = {
         // 这里的 ./news 将决定该模块的访问路径为 active/news
         // value: 模块的具体路径
         './news': './src/news.js',
+        './get': './src/get.js'
       },
       shared: {
         // jquery为共享模块

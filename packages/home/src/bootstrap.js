@@ -1,6 +1,9 @@
 import $ from 'jquery';
 import now from './now';
 import news from 'active/news';
+console.log(111)
+import {getName, getPrefix} from 'active/get'
+console.log(getName(), getPrefix(), 'kkkkk')
 
 // 生成首页标题
 $('<h1>').text('首页').appendTo(document.body);

@@ -96,6 +96,7 @@ module.exports = {
         // 这里的 ./now 将决定该模块的访问路径为 home/now
         // value: 模块的具体路径
         './now': './src/now.js',
+        './name': './src/name.js',
       },
       remotes: {
         // key: 自定义远程暴露的联邦名
