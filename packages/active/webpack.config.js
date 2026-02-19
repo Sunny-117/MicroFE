@@ -10,6 +10,10 @@ module.exports = {
   output: {
     clean: true,
   },
+  optimization: {
+    // Module Federation 要求单 runtime 实例，而 runtimeChunk: true 会为 remoteEntry 生成独立 runtime，从而导致 share scope 失效，最终抛出 fn is not a function。
+    runtimeChunk: false
+  },
   plugins: [
     new HtmlWebpackPlugin(),
     new ModuleFederationPlugin({
